@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    container_name: teleg_backend
+    volumes:
+      # Mount data directory for persistent storage
+      - ./data:/app/data
+      # Mount monitor_session so auth persists
+      - ./monitor_session:/app/monitor_session
+      # Shared logs volume
+      - ./data/logs:/app/data/logs
+      # Shared SSL volume
+      - ${HOST_SSL_PATH:-./ssl}:/app/ssl:ro
+    environment:
+      - TELEGRAM_API_ID=${TELEGRAM_API_ID}
+      - TELEGRAM_API_HASH=${TELEGRAM_API_HASH}
+      - SMTP_SERVER=${SMTP_SERVER}
+      - SMTP_PORT=${SMTP_PORT}
+      - SMTP_USERNAME=${SMTP_USERNAME}
+      - SMTP_PASSWORD=${SMTP_PASSWORD}
+      - ADMIN_USERNAME=${ADMIN_USERNAME}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+    restart: always
+
+  frontend:
+    build: ./frontend
+    container_name: teleg_frontend
+    ports:
+      - "${WEB_PORT:-80}:80"
+      - "${SSL_PORT:-443}:443"
+    volumes:
+      # Mount SSL directory (simpler and avoids file-vs-dir issues)
+      - ${HOST_SSL_PATH:-./ssl}:/etc/nginx/ssl:ro
+      # Mount ACME challenge for renewal
+      - ./letsencrypt/www:/var/www/certbot
+    depends_on:
+      - backend
+    restart: always

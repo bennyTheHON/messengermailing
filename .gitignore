@@ -1,0 +1,29 @@
+# System
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+venv/
+env/
+__pycache__/
+*.pyc
+
+# Node
+node_modules/
+dist/
+build/
+coverage/
+
+# IDE
+.vscode/
+.idea/
+
+# App Specific
+*.session
+*.session-journal
+monitor_session/
+ssl/
+letsencrypt/
+data/
+db.sqlite3

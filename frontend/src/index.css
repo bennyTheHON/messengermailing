@@ -1,0 +1,168 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --bg-dark: #0f172a;
+    --surface: #1e293b;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --accent: #3b82f6;
+}
+
+[dir="rtl"] {
+    font-family: 'Tahoma', 'Arial', sans-serif;
+}
+
+body {
+    @apply bg-slate-900 text-slate-100 font-sans antialiased;
+}
+
+/* Fix for white-on-white text in cards */
+.bg-white {
+    @apply bg-slate-800 text-slate-100 !important;
+}
+
+.text-gray-900 {
+    @apply text-slate-100 !important;
+}
+
+.text-gray-700,
+.text-gray-600 {
+    @apply text-slate-300 !important;
+}
+
+.bg-gray-50,
+.bg-blue-50,
+.bg-slate-50,
+.bg-emerald-50,
+.bg-indigo-50,
+.bg-rose-50,
+.bg-amber-50 {
+    @apply bg-slate-900 !important;
+}
+
+.text-gray-500,
+.text-gray-400 {
+    @apply text-slate-400 !important;
+}
+
+.hover\:bg-blue-50:hover {
+    @apply hover:bg-slate-700 !important;
+}
+
+.hover\:bg-gray-50:hover {
+    @apply hover:bg-slate-700 !important;
+}
+
+.border-gray-300,
+.border-gray-200,
+.border-gray-100 {
+    @apply border-slate-700 !important;
+}
+
+input,
+select,
+textarea {
+    @apply bg-slate-700 border-slate-600 text-white !important;
+}
+
+input::placeholder {
+    @apply text-slate-400 !important;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    @apply bg-slate-900;
+}
+
+::-webkit-scrollbar-thumb {
+    @apply bg-slate-700 rounded;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    @apply bg-slate-600;
+}
+
+/* Dark Mode Overrides for Light Utilities */
+.bg-gray-50 {
+    @apply bg-slate-700/50 !important;
+}
+
+.bg-blue-50 {
+    @apply bg-blue-900/20 !important;
+}
+
+.bg-emerald-50 {
+    @apply bg-emerald-900/20 !important;
+}
+
+.bg-amber-50 {
+    @apply bg-amber-900/20 !important;
+}
+
+.bg-purple-50 {
+    @apply bg-purple-900/20 !important;
+}
+
+.bg-red-50 {
+    @apply bg-red-900/20 !important;
+}
+
+.text-blue-600 {
+    @apply text-blue-400 !important;
+}
+
+.text-emerald-600,
+.text-emerald-700 {
+    @apply text-emerald-400 !important;
+}
+
+.text-amber-600,
+.text-amber-700 {
+    @apply text-amber-400 !important;
+}
+
+.text-purple-600 {
+    @apply text-purple-400 !important;
+}
+
+.text-red-600 {
+    @apply text-red-400 !important;
+}
+
+/* Fix shadows and borders */
+.shadow-lg {
+    @apply shadow-none !important;
+    /* Dark mode doesn't need heavy drop shadows */
+}
+
+.border-gray-100,
+.border-gray-200 {
+    @apply border-slate-700 !important;
+}
+
+.ring-gray-200,
+.ring-gray-300 {
+    @apply ring-slate-600 !important;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in {
+    animation: fade-in 0.5s ease-out forwards;
+}

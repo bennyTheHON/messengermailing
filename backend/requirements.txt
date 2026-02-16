@@ -1,0 +1,23 @@
+fastapi
+uvicorn[standard]
+telethon
+sqlalchemy
+aiosqlite
+apscheduler
+pydantic
+pydantic-settings
+jinja2
+python-multipart
+python-dotenv
+email-validator
+aiosmtplib
+# Security dependencies
+bcrypt==3.2.2
+passlib[bcrypt]
+python-jose[cryptography]
+slowapi
+pyotp
+qrcode
+aioimaplib
+Pillow
+cryptography
